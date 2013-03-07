@@ -1,0 +1,14 @@
+<h3>User Information</h3>
+<br />
+<ul>
+  <li>Username: <%= @user.try(:username) %></li>
+  <li>Name: <%= @user.try(:full_name) %></li>
+  <li>Email: <%= @user.try(:email) %></li>
+  <li><%= link_to 'Delete', user_path(@user), :method => :delete %></li>
+</ul>
+
+<h4>Posts</h4>
+
+<h4>Followers</h4>
+
+<h4>Following</h4>

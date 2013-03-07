@@ -1,0 +1,5 @@
+<ul>
+  <%- @users.each do |user| %>
+    <li><%= user.try(:username) + ' - ' + user.try(:full_name) %></li>
+  <%- end %>
+</ul>
