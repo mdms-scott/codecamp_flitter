@@ -1,3 +1,13 @@
 <p>Hello world!</p>
 
 <p><%= @current_user.first_name %></p>
+
+<ul>
+  <%- @flits.each do |flit| %>
+    <li>
+      <p>@<%= flit.user.username %></p>
+      <p><%= flit.message %></p>
+      <p><%= flit.created_at.strftime("%c") %></p>
+    </li>
+  <%- end %>
+</ul>

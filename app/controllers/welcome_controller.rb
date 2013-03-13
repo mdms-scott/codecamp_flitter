@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   
   def index
-    @current_user = User.first
+    @flits = Flit.all
   end
   
 end
