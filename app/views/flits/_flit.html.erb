@@ -1,0 +1,8 @@
+<li>
+  <p><%= link_to("@#{flit.user.username}", user_path(flit.user.id)) %></p>
+  <p><%= flit.message %></p>
+  <p><%= flit.created_at.strftime("%c") %></p>
+  <%- if flit.user == @current_user %>
+    <p><%= link_to 'Delete', flit_path(flit), :method => :delete, :confirm => 'Are you sure?' %></p>
+  <%- end %>
+</li>

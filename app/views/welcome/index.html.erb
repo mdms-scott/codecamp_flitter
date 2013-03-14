@@ -1,13 +1,12 @@
 <p>Hello world!</p>
 
-<p><%= @current_user.first_name %></p>
+<%- if current_user %>
+  <p><%= @current_user.first_name %></p>
+<%- end %>
 
+<h3> Recent Flits</h3>
 <ul>
   <%- @flits.each do |flit| %>
-    <li>
-      <p>@<%= flit.user.username %></p>
-      <p><%= flit.message %></p>
-      <p><%= flit.created_at.strftime("%c") %></p>
-    </li>
+    <%= render :partial => 'flits/flit', :locals => {:flit => flit} %>
   <%- end %>
 </ul>
