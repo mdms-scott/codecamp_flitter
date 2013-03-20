@@ -1,5 +1,7 @@
 class FlitsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def new
     @flit = Flit.new
   end

@@ -1,4 +1,7 @@
 <h3>New Flit</h3>
+<%- @flit.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<%- end %>
 <%= form_for(@flit) do |f| %>
   <%= f.hidden_field :user_id, :value => @current_user.id %>
   <%= f.label :message %>

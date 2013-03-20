@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   attr_accessible :email
 
   has_many :flits, :dependent => :destroy
+
+  validates :username, :uniqueness => true, :length => {:minimum => 4}
   
   def full_name
     self.first_name + ' ' + self.last_name
