@@ -7,11 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<%- if notice %>
+  <p class="notice"><%= notice %></p>
+<%- end %>
+<%- if alert %>
+  <p class="alert"><%= alert %></p>
+<%- end %>
 <div>
   <%- if current_user %>
     <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+    <%= link_to 'Edit Account', edit_user_registration_path %>
   <%- else %>
     <%= link_to 'Login', new_user_session_path %>
     |
@@ -20,6 +25,7 @@
 </div>
 <h2>Flitter!</h2>
 <div id='container'>
+  <%= link_to "Post a New Flit", new_flit_path, :class => 'btn btn-success' %>
   <%= yield %>
 </div>
 
