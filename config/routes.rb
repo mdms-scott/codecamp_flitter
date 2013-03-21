@@ -14,7 +14,13 @@ Flitter::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users
+  resources :users do
+    member do
+      post 'follow'
+      delete 'unfollow'
+    end
+  end
+
   resources :flits
 
   # Sample resource route with options:

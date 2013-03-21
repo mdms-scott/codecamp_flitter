@@ -1,5 +1,11 @@
 <h3>User Information</h3>
 <br />
+<%- if @user == current_user %>
+<%- elsif current_user.followed_users.include?(@user) %>
+  <%= link_to "Stop Folllowing this User", unfollow_user_path(@user.id), :method => :delete %>
+<%- else %>
+  <%= link_to "Follow this User", follow_user_path(@user.id), :method => :post %>
+<%- end %>
 <ul>
   <li>Username: <%= @user.try(:username) %></li>
   <li>Name: <%= @user.try(:full_name) %></li>
@@ -15,6 +21,17 @@
     <%= render :partial => 'flits/flit', :locals => {:flit => flit} %>
   <%- end %>
 </ul>
+
 <h4>Followers</h4>
+<ul>
+  <%- @user.followers.each do |follower| %>
+    <li><%= link_to follower.username, user_path(follower.id) %></li>
+  <%- end %>
+</ul>
 
 <h4>Following</h4>
+<ul>
+  <%- @user.followed_users.each do |followed_user| %>
+    <li><%= link_to followed_user.username, user_path(followed_user.id) %></li>
+  <%- end %>
+</ul>
